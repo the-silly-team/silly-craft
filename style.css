@@ -1,80 +1,94 @@
-/* silly craft - styles */
+/* silly craft - infinite craft style void aesthetic */
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#1a1530;font-family:'Segoe UI',sans-serif;color:#e0ddf5;min-height:100vh;overflow:hidden;user-select:none}
-.wrap{max-width:1200px;margin:0 auto;padding:16px;display:flex;flex-direction:column;height:100vh}
-header{text-align:center;margin-bottom:12px;flex-shrink:0}
-h1{font-family:'Comic Sans MS',cursive;font-size:32px;color:#ffd700;margin:0 0 4px;text-shadow:0 0 10px #ffd70066}
-.sub{color:#9a93b8;font-size:12px;margin:0}
-.stats{display:flex;justify-content:center;gap:16px;margin:8px 0;flex-shrink:0}
-.stat{background:#252040;border:2px solid #8b6cf0;border-radius:10px;padding:6px 16px;text-align:center}
-.stat .val{font-size:18px;font-weight:900;color:#ffd700;display:block}
-.stat .lbl{font-size:10px;color:#9a93b8}
+body{background:#05050a;font-family:'Comic Sans MS','Chalkboard SE',cursive;color:#e8e6f0;min-height:100vh;overflow:hidden;user-select:none}
+.wrap{max-width:1400px;margin:0 auto;padding:16px;display:flex;flex-direction:column;height:100vh}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-shrink:0;padding:0 8px}
+.header-left h1{font-family:'Comic Sans MS',cursive;font-size:32px;color:#a78bfa;margin:0 0 2px;text-shadow:0 0 30px #a78bfa55}
+.header-left .sub{color:#5a5a7a;font-size:13px;margin:0;font-family:'Comic Sans MS',cursive}
+.stats{display:flex;gap:12px}
+.stat{background:#0f0f1a;border:1px solid #2a2a3a;border-radius:12px;padding:8px 16px;text-align:center;min-width:90px}
+.stat .val{font-size:18px;font-weight:900;color:#a78bfa;display:block;font-family:'Comic Sans MS',cursive}
+.stat .lbl{font-size:9px;color:#5a5a7a;margin-top:2px;text-transform:uppercase;letter-spacing:1px;font-family:'Comic Sans MS',cursive}
 .main{flex:1;display:flex;gap:12px;overflow:hidden;min-height:0}
-.elements-panel{width:280px;background:#252040;border:3px solid #e8defd;border-radius:16px;padding:12px;display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
-.elements-panel h2{font-family:'Comic Sans MS',cursive;font-size:16px;color:#8b6cf0;margin:0 0 8px}
-.search-box{background:#1a1530;border:2px solid #e8defd;border-radius:10px;padding:6px 10px;color:#e0ddf5;font:12px 'Segoe UI';outline:none;width:100%;margin-bottom:8px}
-.search-box:focus{border-color:#8b6cf0}
+.elements-panel{width:320px;background:#0f0f1a;border:1px solid #2a2a3a;border-radius:16px;padding:14px;display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
+.elements-panel h2{font-family:'Comic Sans MS',cursive;font-size:18px;color:#a78bfa;margin:0 0 10px}
+.search-box{background:#05050a;border:1px solid #2a2a3a;border-radius:10px;padding:8px 12px;color:#e8e6f0;font:13px 'Comic Sans MS',cursive;outline:none;width:100%;margin-bottom:8px}
+.search-box:focus{border-color:#a78bfa}
 .elements-grid{flex:1;overflow-y:auto;display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start;padding:4px}
-.el{background:#1a1530;border:2px solid #e8defd;border-radius:10px;padding:6px 10px;cursor:grab;font-size:13px;display:flex;align-items:center;gap:6px;transition:transform .1s,border-color .2s;user-select:none;white-space:nowrap}
-.el:hover{border-color:#8b6cf0;transform:scale(1.05)}
+.el{background:#1a1a2e;border:1px solid #2a2a3a;border-radius:10px;padding:6px 12px;cursor:grab;font-size:13px;display:flex;align-items:center;gap:6px;transition:transform .15s,border-color .2s,box-shadow .2s;user-select:none;white-space:nowrap;font-family:'Comic Sans MS',cursive}
+.el:hover{border-color:#a78bfa;transform:scale(1.08);box-shadow:0 0 12px #a78bfa44}
 .el:active{cursor:grabbing;transform:scale(0.95)}
-.el .emoji{font-size:18px}
-.el.new{border-color:#ffd700;animation:pulse .5s ease}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.15)}100%{transform:scale(1)}}
-.canvas-area{flex:1;background:#252040;border:3px solid #e8defd;border-radius:16px;position:relative;overflow:hidden;min-width:300px}
-.canvas-area .hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#9a93b8;font-size:14px;text-align:center;pointer-events:none}
-.canvas-item{position:absolute;cursor:grab;user-select:none;padding:8px 12px;border-radius:12px;background:#1a1530;border:2px solid #8b6cf0;font-size:14px;display:flex;align-items:center;gap:6px;transition:box-shadow .2s;white-space:nowrap}
-.canvas-item:hover{box-shadow:0 0 12px #8b6cf088}
-.canvas-item.dragging{opacity:.7;transform:scale(1.1);z-index:9999}
-.canvas-item.loading{opacity:.5;animation:blink .5s infinite}
-@keyframes blink{0%,100%{opacity:.5}50%{opacity:.2}}
-.combine-flash{position:absolute;pointer-events:none;font-size:32px;animation:flash .6s ease-out forwards;z-index:9999}
-@keyframes flash{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(2)}}
-.result-toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#252040;border:2px solid #ffd700;border-radius:12px;padding:12px 24px;color:#ffd700;font-weight:700;font-size:14px;z-index:99999;opacity:0;transition:opacity .3s;pointer-events:none;text-align:center;max-width:400px}
+.el .emoji{font-size:16px}
+.el.new{border-color:#ffd700;box-shadow:0 0 10px #ffd70044;animation:pulse .5s ease}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
+.canvas-area{flex:1;background:#05050a;border:1px solid #2a2a3a;border-radius:16px;position:relative;overflow:hidden;min-width:300px}
+.canvas-area .hint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#3a3a5a;font-size:16px;text-align:center;pointer-events:none;line-height:2;font-family:'Comic Sans MS',cursive}
+.canvas-area .hint .hint-icon{font-size:56px;margin-bottom:16px;opacity:.3}
+.canvas-item{position:absolute;cursor:grab;user-select:none;padding:8px 14px;border-radius:12px;background:#1a1a2e;border:1px solid #2a2a3a;font-size:13px;display:flex;align-items:center;gap:6px;transition:box-shadow .2s,transform .1s,background .2s;white-space:nowrap;z-index:10;font-family:'Comic Sans MS',cursive}
+.canvas-item:hover{box-shadow:0 0 15px #a78bfa66;border-color:#a78bfa;background:#22223a}
+.canvas-item.dragging{opacity:.5;transform:scale(1.1);z-index:9999;box-shadow:0 0 25px #a78bfa88}
+.canvas-item.hover-target{border-color:#5fd4b0;box-shadow:0 0 20px #5fd4b066;background:#1a2a24}
+.canvas-item.combining{animation:combine .3s ease}
+@keyframes combine{0%{transform:scale(1)}50%{transform:scale(1.3)}100%{transform:scale(1)}}
+.combine-flash{position:absolute;pointer-events:none;font-size:32px;animation:flash .7s ease-out forwards;z-index:9999}
+@keyframes flash{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(3)}}
+.result-toast{position:fixed;top:24px;left:50%;transform:translateX(-50%);background:#0f0f1a;border:1px solid #a78bfa;border-radius:14px;padding:14px 28px;color:#a78bfa;font-weight:700;font-size:15px;z-index:99999;opacity:0;transition:opacity .3s;pointer-events:none;text-align:center;max-width:450px;backdrop-filter:blur(10px);font-family:'Comic Sans MS',cursive}
 .result-toast.show{opacity:1}
 .result-toast .new{color:#5fd4b0}
-.clear-btn{background:#ff6b6b;color:#fff;border:0;border-radius:8px;padding:4px 10px;cursor:pointer;font:700 11px 'Segoe UI';margin-left:auto}
+.clear-btn{background:#ff6b6b;color:#fff;border:0;border-radius:8px;padding:5px 12px;cursor:pointer;font:700 11px 'Comic Sans MS',cursive;margin-left:auto}
 .clear-btn:hover{background:#d64f4f}
-.footer{padding:8px 0 0;text-align:center;color:#9a93b8;font-size:11px;flex-shrink:0}
-.footer a{color:#8b6cf0;text-decoration:none}
-.settings-btn{background:#252040;border:2px solid #e8defd;border-radius:10px;padding:6px 12px;cursor:pointer;font:700 12px 'Segoe UI';color:#e0ddf5;margin-bottom:8px;width:100%}
-.settings-btn:hover{border-color:#8b6cf0}
-.settings-panel{background:#1a1530;border:2px solid #8b6cf0;border-radius:12px;padding:12px;margin-bottom:8px;display:none}
+.footer{padding:8px 0 0;text-align:center;color:#3a3a5a;font-size:11px;flex-shrink:0;font-family:'Comic Sans MS',cursive}
+.footer a{color:#a78bfa;text-decoration:none}
+.settings-btn{background:#1a1a2e;border:1px solid #2a2a3a;border-radius:8px;padding:6px 12px;cursor:pointer;font:700 12px 'Comic Sans MS',cursive;color:#e8e6f0;margin-bottom:8px;width:100%}
+.settings-btn:hover{border-color:#a78bfa}
+.settings-panel{background:#05050a;border:1px solid #a78bfa;border-radius:12px;padding:12px;margin-bottom:8px;display:none}
 .settings-panel.show{display:block}
-.settings-panel input{width:100%;background:#252040;border:2px solid #e8defd;border-radius:8px;padding:6px 10px;color:#e0ddf5;font:12px 'Segoe UI';outline:none;margin-bottom:8px}
-.settings-panel input:focus{border-color:#8b6cf0}
-.settings-panel label{font-size:11px;color:#9a93b8;display:block;margin-bottom:4px}
-.settings-panel .status{font-size:11px;color:#5fd4b0;margin-top:4px}
-.ai-badge{display:inline-block;background:#5fd4b0;color:#0a3a2a;font:700 10px 'Segoe UI';padding:2px 8px;border-radius:8px;margin-left:8px}
+.settings-panel input{width:100%;background:#1a1a2e;border:1px solid #2a2a3a;border-radius:8px;padding:6px 10px;color:#e8e6f0;font:12px 'Comic Sans MS',cursive;outline:none;margin-bottom:8px}
+.settings-panel input:focus{border-color:#a78bfa}
+.settings-panel label{font-size:11px;color:#5a5a7a;display:block;margin-bottom:4px;font-family:'Comic Sans MS',cursive}
+.settings-panel .status{font-size:11px;color:#5fd4b0;margin-top:4px;font-family:'Comic Sans MS',cursive}
+.ai-badge{display:inline-block;background:#a78bfa;color:#05050a;font:700 10px 'Comic Sans MS',cursive;padding:2px 8px;border-radius:8px;margin-left:8px}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:#05050a}
+::-webkit-scrollbar-thumb{background:#2a2a3a;border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:#a78bfa}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>🧠 silly craft <span class="ai-badge">AI-powered</span></h1>
-    <p class="sub">combine elements to discover new ones. drag from the left panel onto the canvas. drop two elements together to combine. infinite recipes powered by AI.</p>
+    <div class="header-left">
+      <h1>🧠 silly craft <span class="ai-badge">AI-powered</span></h1>
+      <p class="sub">combine elements to discover new ones. drag from the left panel onto the canvas. drop two elements together to combine.</p>
+    </div>
+    <div class="header-right">
+      <div class="stat"><span class="val" id="discovered">4</span><span class="lbl">discovered</span></div>
+      <div class="stat"><span class="val" id="combos">0</span><span class="lbl">combinations</span></div>
+    </div>
   </header>
-
-  <div class="stats">
-    <div class="stat"><span class="val" id="discovered">4</span><span class="lbl">discovered</span></div>
-    <div class="stat"><span class="val" id="total">?</span><span class="lbl">total possible</span></div>
-    <div class="stat"><span class="val" id="combos">0</span><span class="lbl">combinations made</span></div>
-  </div>
 
   <div class="main">
     <div class="elements-panel">
-      <h2>elements</h2>
+      <div class="panel-header">
+        <h2>elements</h2>
+        <button class="clear-btn" onclick="clearCanvas()">clear canvas</button>
+      </div>
       <button class="settings-btn" onclick="toggleSettings()">⚙️ AI settings</button>
       <div class="settings-panel" id="settingsPanel">
         <label>Google Gemini API key (free at aistudio.google.com/apikey)</label>
         <input type="password" id="apiKey" placeholder="paste your API key here..." oninput="saveApiKey()">
-        <div class="status" id="apiStatus">no key set — using fallback recipes</div>
+        <div class="status" id="apiStatus">no key set — using cached recipes</div>
       </div>
       <input class="search-box" id="search" placeholder="search elements..." oninput="filterElements()">
       <div class="elements-grid" id="elGrid"></div>
     </div>
     <div class="canvas-area" id="canvas">
-      <div class="hint" id="hint">drag elements here<br>drop two together to combine<br><br>✨ discover new elements ✨<br><br><small>AI generates infinite recipes</small></div>
+      <div class="hint" id="hint">
+        <div class="hint-icon">✨</div>
+        <div>drag elements here</div>
+        <div>drop two together to combine</div>
+        <div class="hint-small">AI generates infinite recipes</div>
+      </div>
     </div>
   </div>
 

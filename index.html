@@ -9,40 +9,40 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>🧠 silly craft <span class="ai-badge">AI-powered</span></h1>
-    <p class="sub">combine elements to discover new ones. drag from the left panel onto the canvas. drop two elements together to combine. infinite recipes powered by AI.</p>
+    <div class="header-left">
+      <h1>🧠 silly craft <span class="ai-badge">AI-powered</span></h1>
+      <p class="sub">combine elements to discover new ones.</p>
+    </div>
+    <div class="header-right">
+      <div class="stat"><span class="val" id="discovered">4</span><span class="lbl">discovered</span></div>
+      <div class="stat"><span class="val" id="combos">0</span><span class="lbl">combinations</span></div>
+    </div>
   </header>
-
-  <div class="stats">
-    <div class="stat"><span class="val" id="discovered">4</span><span class="lbl">discovered</span></div>
-    <div class="stat"><span class="val" id="total">∞</span><span class="lbl">total possible</span></div>
-    <div class="stat"><span class="val" id="combos">0</span><span class="lbl">combinations made</span></div>
-  </div>
-
   <div class="main">
     <div class="elements-panel">
-      <h2>elements</h2>
+      <div class="panel-header">
+        <h2>elements</h2>
+        <button class="clear-btn" onclick="clearCanvas()">clear canvas</button>
+      </div>
       <button class="settings-btn" onclick="toggleSettings()">⚙️ AI settings</button>
       <div class="settings-panel" id="settingsPanel">
-        <label>Google Gemini API key (free at aistudio.google.com/apikey)</label>
-        <input type="password" id="apiKey" placeholder="paste your API key here..." oninput="saveApiKey()">
-        <div class="status" id="apiStatus">no key set — using fallback recipes</div>
+        <label>API key</label>
+        <input type="password" id="apiKey" placeholder="paste..." oninput="saveApiKey()">
+        <div class="status" id="apiStatus">no key</div>
       </div>
-      <input class="search-box" id="search" placeholder="search elements..." oninput="filterElements()">
+      <input class="search-box" id="search" placeholder="search..." oninput="filterElements()">
       <div class="elements-grid" id="elGrid"></div>
     </div>
     <div class="canvas-area" id="canvas">
-      <div class="hint" id="hint">drag elements here<br>drop two together to combine<br><br>✨ discover new elements ✨<br><br><small>AI generates infinite recipes</small></div>
+      <div class="hint" id="hint">
+        <div class="hint-icon">✨</div>
+        <div>drag elements here</div>
+      </div>
     </div>
   </div>
-
-  <div class="footer">
-    built with <code>:3</code> and a concerning amount of coffee · <a href="https://github.com/the-silly-team">the silly team</a>
-  </div>
+  <div class="footer">footer</div>
 </div>
-
 <div class="result-toast" id="toast"></div>
-
 <script src="game.js"></script>
 </body>
 </html>
